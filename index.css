@@ -1,0 +1,94 @@
+@keyframes logo-slide-in {
+  from {
+    background-position: 100% 0%;
+  }
+
+  to {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes glow-fade-in {
+  from {
+    filter: drop-shadow(0 0 12px rgba(182, 255, 210, 0));
+  }
+
+  to {
+    filter: drop-shadow(0 0 12px rgba(182, 255, 210, 0.4));
+  }
+}
+
+.logo-animate {
+  background: linear-gradient(90deg, #B6FFD2, #FFC6B3, white 50%, white);
+  background-size: 200% 100%;
+  background-position: 100% 0%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: logo-slide-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+    glow-fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  display: inline-block;
+}
+
+/* Case Studies Animations */
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1000;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 2s ease forwards;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.light-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.light-sweep::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right,
+      transparent,
+      rgba(255, 255, 255, 0.03),
+      transparent);
+  transform: skewX(-25deg);
+  transition: 0.7s;
+}
+
+.light-sweep:hover::after {
+  left: 150%;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

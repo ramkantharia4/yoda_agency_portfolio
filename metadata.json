@@ -1,0 +1,8 @@
+
+{
+  "name": "YodaDayo Premium Portfolio",
+  "description": "An animation-driven agency portfolio redesign focusing on performance-optimized visual storytelling, horizontal scrolling work showcases, and sophisticated micro-interactions.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
