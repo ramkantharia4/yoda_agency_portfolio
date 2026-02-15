@@ -16,7 +16,7 @@ export interface Article {
   sections: {
     id: string;
     title: string;
-    content: string;
+    content: React.ReactNode;
   }[];
 }
 
