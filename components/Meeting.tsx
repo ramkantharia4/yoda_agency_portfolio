@@ -16,26 +16,8 @@ const Meeting: React.FC = () => {
     const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const navigate = useNavigate();
 
-    useEffect(() => {
-        // Protect this route - Check session on mount
-        fetch("http://127.0.0.1:8000/check-session", {
-            method: "GET",
-            credentials: "include",
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if (!data.logged_in) {
-                    navigate('/start'); // Redirect to login/start page
-                } else if (data.token && data.token.includes('-')) {
-                    // Pre-fill email if token contains it
-                    const savedEmail = data.token.split('-').pop();
-                    if (savedEmail && savedEmail.includes('@')) {
-                        setEmail(savedEmail);
-                    }
-                }
-            })
-            .catch(err => console.debug("Backend offline, skipping session check"));
-    }, [navigate]);
+    // Removed local backend session check
+
     const handleConfirm = async () => {
         if (!selectedDate || !selectedTime || !email || !goals.trim()) {
             alert('Please fill in all fields.');
@@ -71,7 +53,7 @@ const Meeting: React.FC = () => {
             setFormStatus('error');
             // If it's a 404, it means the table doesn't exist
             if (error?.code === '42P01') {
-                alert('Table "meetings" not found. Please run the SQL in your Supabase dashboard.');
+                alert('Table "meetings" not found. Please ensure Supabase is set up.');
             }
         }
     };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
-import { Lightbulb, Calendar, ArrowRight, X, CheckCircle, Lock, User } from 'lucide-react';
+import { Lightbulb, Calendar, ArrowRight, CheckCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 
@@ -41,10 +41,6 @@ const hoverScaleVariants: Variants = {
 const ProjectInitiation = () => {
     const navigate = useNavigate();
     const [isMeetingExpanding, setIsMeetingExpanding] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [showLogin, setShowLogin] = useState(false);
-    const [loginEmail, setLoginEmail] = useState('');
-    const [loginPassword, setLoginPassword] = useState('');
     const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [formData, setFormData] = useState({
         name: '',
@@ -54,44 +50,8 @@ const ProjectInitiation = () => {
         requirements: ''
     });
 
-    useEffect(() => {
-        // Check session on mount
-        fetch("http://127.0.0.1:8000/check-session", {
-            method: "GET",
-            credentials: "include",
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.logged_in) {
-                    setIsLoggedIn(true);
-                }
-            })
-            .catch(err => console.debug("Backend offline, skipping session check"));
-    }, []);
+    // Removed local backend session check and login logic as we are switching to serverless/Supabase only.
 
-    const handleLogin = async () => {
-        if (!loginEmail || !loginPassword) return;
-
-        try {
-            const res = await fetch("http://127.0.0.1:8000/login", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email: loginEmail, password: loginPassword }),
-                credentials: "include",
-            });
-
-            const data = await res.json();
-            if (res.ok) {
-                setIsLoggedIn(true);
-                setShowLogin(false);
-                setFormData(prev => ({ ...prev, email: loginEmail }));
-            } else {
-                alert(data.detail || "Login failed");
-            }
-        } catch (error) {
-            alert("Connection error to auth server");
-        }
-    };
 
     const handleInitiate = async () => {
         if (!formData.name || !formData.email || !formData.business_type || !formData.requirements) {
@@ -251,67 +211,12 @@ const ProjectInitiation = () => {
                             >
                                 <div className="flex justify-between items-center mb-10">
                                     <h3 className="text-xl font-bold text-white uppercase tracking-tight">
-                                        {showLogin ? "Client Login" : "Share Your Logic"}
+                                        Share Your Logic
                                     </h3>
-                                    {!isLoggedIn && (
-                                        <button
-                                            onClick={() => setShowLogin(!showLogin)}
-                                            className="text-xs font-bold text-zinc-500 hover:text-white transition-colors flex items-center gap-2"
-                                        >
-                                            {showLogin ? <ArrowRight size={14} /> : <Lock size={14} />}
-                                            {showLogin ? "Back to Form" : "Already a client? Log In"}
-                                        </button>
-                                    )}
-                                    {isLoggedIn && (
-                                        <div className="flex items-center gap-2 text-zinc-400 text-xs font-bold bg-white/5 py-1 px-3 rounded-full border border-white/10">
-                                            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                                            Active Session: {loginEmail || "Premium User"}
-                                        </div>
-                                    )}
                                 </div>
 
                                 <AnimatePresence mode="wait">
-                                    {showLogin ? (
-                                        <motion.div
-                                            key="login"
-                                            initial={{ opacity: 0, x: 20 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            exit={{ opacity: 0, x: -20 }}
-                                            className="space-y-6 py-4"
-                                        >
-                                            <div className="space-y-4">
-                                                <div className="space-y-2">
-                                                    <label className="text-[10px] uppercase tracking-widest font-bold text-zinc-500">Email Address</label>
-                                                    <input
-                                                        type="email"
-                                                        value={loginEmail}
-                                                        onChange={(e) => setLoginEmail(e.target.value)}
-                                                        className="w-full bg-zinc-950/50 border border-zinc-800 rounded-lg px-4 py-3 focus:border-white/20 transition-all outline-none text-white"
-                                                        placeholder="email@example.com"
-                                                    />
-                                                </div>
-                                                <div className="space-y-2">
-                                                    <label className="text-[10px] uppercase tracking-widest font-bold text-zinc-500">Security Token</label>
-                                                    <input
-                                                        type="password"
-                                                        value={loginPassword}
-                                                        onChange={(e) => setLoginPassword(e.target.value)}
-                                                        className="w-full bg-zinc-950/50 border border-zinc-800 rounded-lg px-4 py-3 focus:border-white/20 transition-all outline-none text-white"
-                                                        placeholder="••••••••"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <button
-                                                onClick={handleLogin}
-                                                className="w-full py-4 bg-white text-black rounded-xl font-bold uppercase tracking-widest text-sm hover:bg-zinc-200 transition-all"
-                                            >
-                                                Authorize Session
-                                            </button>
-                                            <p className="text-[10px] text-center text-zinc-600 uppercase tracking-widest leading-relaxed">
-                                                Demo Credits: test@example.com / 1234
-                                            </p>
-                                        </motion.div>
-                                    ) : formStatus === 'success' ? (
+                                    {formStatus === 'success' ? (
                                         <motion.div
                                             key="success"
                                             initial={{ opacity: 0, scale: 0.8 }}
