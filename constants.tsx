@@ -26,6 +26,7 @@ export const ARTICLES: Article[] = [
     excerpt: 'A deep-dive into our neuro-aesthetic approach to visual identity, blending ancient archetypes with modern digital sovereignty.',
     readTime: '14 min read',
     heroImage: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=2071&auto=format&fit=crop',
+    heroAlt: 'Close up of high-end brand identity design and typography on 4k display',
     sections: [
       {
         id: 'dna',
@@ -99,6 +100,7 @@ export const ARTICLES: Article[] = [
     excerpt: 'Moving beyond "websites" to build resilient, scalable digital architectures that dominate search rankings and user retention.',
     readTime: '18 min read',
     heroImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop',
+    heroAlt: 'Modern web development workspace with high-performance code on screens',
     sections: [
       {
         id: 'nextjs',
@@ -182,6 +184,7 @@ export const ArchitecturalSection = ({ children, priority = false }) => {
     excerpt: 'The methodology behind converting social attention into high-intent acquisition through data-driven creative and algorithmic alignment.',
     readTime: '15 min read',
     heroImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026&auto=format&fit=crop',
+    heroAlt: 'Data-driven marketing analytics and Meta Ads campaign dashboard',
     sections: [
       {
         id: 'architecture',
@@ -392,6 +395,7 @@ export const PROJECTS: Project[] = [
     title: 'Volt X',
     category: 'Energy Systems',
     image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=1200',
+    imageAlt: 'Volt X sustainable energy grid digital infrastructure dashboard',
     video: '/video/volt-x.mp4',
     description: 'High-voltage digital infrastructure for sustainable energy grids.',
     year: '2024',
@@ -406,6 +410,7 @@ export const PROJECTS: Project[] = [
     title: 'Vestra AI',
     category: 'SaaS / AI',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200',
+    imageAlt: 'Vestra AI enterprise resource optimization strategic engine interface',
     video: '/video/vestra.ai.mp4',
     description: 'Autonomous strategic engine for enterprise resource optimization.',
     year: '2023',
@@ -420,6 +425,7 @@ export const PROJECTS: Project[] = [
     title: 'Arc-H',
     category: 'Physical Architecture',
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200',
+    imageAlt: 'Arc-H geometric structural integrity architectural visualization',
     video: '/video/aurelian.mp4',
     description: 'Cinematic deconstruction of geometric structural integrity.',
     year: '2024',
@@ -434,6 +440,7 @@ export const PROJECTS: Project[] = [
     title: 'Futrex',
     category: 'Animated Website',
     image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200',
+    imageAlt: 'Futrex futuristic web experience with immersive 3D interactions',
     video: '/video/arc-h.mp4',
     description: 'Futuristic web experience with cutting-edge animations and immersive interactions.',
     year: '2023',
@@ -448,6 +455,7 @@ export const PROJECTS: Project[] = [
     title: 'Nomad',
     category: 'Travel / Tech',
     image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=1200',
+    imageAlt: 'Nomad decentralized ecosystem for remote global mobility map',
     video: '/video/nomad.mp4',
     description: 'Decentralized ecosystem for the modern era of remote global mobility.',
     year: '2024',
@@ -462,6 +470,7 @@ export const PROJECTS: Project[] = [
     title: 'Bright Smile',
     category: 'Healthcare / Wellness',
     image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=1200',
+    imageAlt: 'Bright Smile AI-assisted dental diagnostic platform experience',
     video: '/video/bright-smile.mp4',
     description: 'AI-assisted dental diagnostic and patient experience platform.',
     year: '2023',
@@ -479,6 +488,7 @@ export const TEAM: TeamMember[] = [
     name: 'Ram Kantharia',
     role: 'Creative Director',
     image: '/ram_kantharia.jpg',
+    imageAlt: 'Ram Kantharia - Creative Director at YodaDayo',
     bio: 'Leading the vision. Specializing in brand architecture and cinematic digital experiences.',
     socials: {
       instagram: 'https://www.instagram.com/ramisalwayskidding?igsh=ejZheDhzOHlrYXVt',
@@ -491,6 +501,7 @@ export const TEAM: TeamMember[] = [
     name: 'Prapti Sharma',
     role: 'Lead Strategist',
     image: '/prapti_sharma.jpg',
+    imageAlt: 'Prapti Sharma - Lead Strategist at YodaDayo',
     bio: 'The engine of execution. Bridging the gap between client goals and technical impact.',
     socials: {
       instagram: 'https://www.instagram.com/prapti_sharma_38?igsh=eG1hcXd0enVmeGh2',

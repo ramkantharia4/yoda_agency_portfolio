@@ -13,6 +13,7 @@ export interface Article {
   excerpt: string;
   readTime: string;
   heroImage: string;
+  heroAlt?: string;
   sections: {
     id: string;
     title: string;
@@ -34,6 +35,7 @@ export interface Project {
   title: string;
   category: string;
   image: string;
+  imageAlt?: string;
   video?: string;
   description: string;
   year: string;
@@ -49,6 +51,7 @@ export interface TeamMember {
   name: string;
   role: string;
   image: string;
+  imageAlt?: string;
   bio: string;
   socials: {
     instagram?: string;

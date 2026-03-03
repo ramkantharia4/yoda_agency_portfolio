@@ -17,7 +17,7 @@ const TeamMemberCard: React.FC<{ member: any; index: number }> = ({ member, inde
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 1 }}
           src={member.image}
-          alt={member.name}
+          alt={member.imageAlt || member.name}
           className="w-full h-full object-cover grayscale brightness-75 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100"
         />
 

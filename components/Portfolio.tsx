@@ -53,7 +53,7 @@ const ProjectCard: React.FC<{ project: Project; onClick: () => void }> = ({ proj
       <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
       <img
         src={project.image}
-        alt={project.title}
+        alt={project.imageAlt || project.title}
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
       />
 
@@ -114,7 +114,7 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
               className="w-full h-full object-cover"
             />
           ) : (
-            <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+            <img src={project.image} alt={project.imageAlt || project.title} className="w-full h-full object-cover" />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent" />
         </div>
